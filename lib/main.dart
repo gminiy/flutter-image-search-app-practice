@@ -1,4 +1,3 @@
-// url: "https://pixabay.com/api/?key=41485709-10bae150ab77c646c4aade16f&image_type=photo"
 import 'package:flutter/material.dart';
 
 void main() {
