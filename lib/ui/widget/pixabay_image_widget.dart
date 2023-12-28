@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PixabayImage extends StatelessWidget {
+class PixabayImageWidget extends StatelessWidget {
   final String _url;
 
-  const PixabayImage({
+  const PixabayImageWidget({
     super.key,
     required String url,
   }) : _url = url;

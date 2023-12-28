@@ -7,9 +7,9 @@ class PixabayApi {
       'https://pixabay.com/api/?key=41485709-10bae150ab77c646c4aade16f&image_type=photo';
 
   Future<PixabayImageSearchResultDto> searchImages(String query) async {
-    final String url = '$_baseUrl?q=$query';
+    final String url = '$_baseUrl&q=$query';
     final response = await http.get(Uri.parse(url));
-    final String json = jsonDecode(response.body);
+    final  json = jsonDecode(response.body);
 
     return PixabayImageSearchResultDto.fromJson(json);
   }
