@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app_practice/ui/widget/pixabay_image.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -42,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Expanded(
@@ -52,7 +53,7 @@ class _MainScreenState extends State<MainScreen> {
                             crossAxisCount: 2),
                     itemCount: 3,
                     itemBuilder: (context, index) {
-                      return Text('$index');
+                      return PixabayImage(url: 'https://cdn.pixabay.com/photo/2016/01/05/13/58/apple-1122537_150.jpg');
                     }),
               )
             ],
