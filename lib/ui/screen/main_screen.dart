@@ -3,7 +3,7 @@ import 'package:image_search_app_practice/ui/screen/main_view_model.dart';
 
 class MainScreen extends StatelessWidget {
   final MainViewModel viewModel = MainViewModel();
-  const MainScreen({super.key});
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

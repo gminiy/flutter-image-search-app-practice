@@ -8,7 +8,7 @@ class MainViewModel {
   final PixabayImageRepository pixabayImageRepository = PixabayImageRepository();
 
   Future queryImages() async {
-    return await pixabayImageRepository.queryImages(_textEditingController.text);
+    return await pixabayImageRepository.queryImages(textEditingController.text);
   }
 
 
