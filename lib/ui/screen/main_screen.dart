@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
                 decoration: InputDecoration(
                   hintText: 'Search',
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.search_outlined),
+                    icon: const Icon(Icons.search_outlined),
                     onPressed: () async {
                       await viewModel.queryImages(textEditingController.text);
                       setState(() {});
@@ -40,18 +40,18 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.green, width: 2),
+                    borderSide: const BorderSide(color: Colors.green, width: 2),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.green, width: 2),
+                    borderSide: const BorderSide(color: Colors.green, width: 2),
                   ),
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Expanded(
                 child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 32,
                       mainAxisSpacing: 32,
