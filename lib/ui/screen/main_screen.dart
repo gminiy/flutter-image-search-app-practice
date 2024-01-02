@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:image_search_app_practice/ui/screen/main_view_model.dart';
+import 'package:image_search_app_practice/ui/widget/image_widget.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final TextEditingController textEditingController = TextEditingController();
   final MainViewModel viewModel = MainViewModel();
-  MainScreen({super.key});
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +28,21 @@ class MainScreen extends StatelessWidget {
           child: Column(
             children: [
               TextField(
-                controller: viewModel.textEditingController,
+                controller: textEditingController,
                 decoration: InputDecoration(
                   hintText: 'Search',
                   suffixIcon: IconButton(
                     icon: Icon(Icons.search_outlined),
-                    onPressed: () {},
+                    onPressed: () async {
+                      await viewModel.queryImages(textEditingController.text);
+                      setState(() {});
+                    },
                   ),
                   enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.green, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(color: Colors.green, width: 2),
                   ),
@@ -37,7 +58,7 @@ class MainScreen extends StatelessWidget {
                     ),
                     itemCount: viewModel.images.length,
                     itemBuilder: (context, index) {
-                      return Text('$index');
+                      return ImageWidget(image: viewModel.images[index]);
                     }),
               )
             ],
