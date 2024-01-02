@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app_practice/ui/screen/main_view_model.dart';
 
 class MainScreen extends StatelessWidget {
+  final MainViewModel viewModel = MainViewModel();
   const MainScreen({super.key});
 
   @override
@@ -12,6 +14,7 @@ class MainScreen extends StatelessWidget {
           child: Column(
             children: [
               TextField(
+                controller: viewModel.textEditingController,
                 decoration: InputDecoration(
                   hintText: 'Search',
                   suffixIcon: IconButton(
@@ -32,6 +35,7 @@ class MainScreen extends StatelessWidget {
                       crossAxisSpacing: 32,
                       mainAxisSpacing: 32,
                     ),
+                    itemCount: viewModel.images.length,
                     itemBuilder: (context, index) {
                       return Text('$index');
                     }),
