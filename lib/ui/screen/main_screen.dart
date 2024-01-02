@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_search_app_practice/ui/screen/main_view_model.dart';
 import 'package:image_search_app_practice/ui/widget/image_widget.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -21,6 +22,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final MainViewModel viewModel = context.watch<MainViewModel>();
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -49,18 +52,21 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              Expanded(
-                child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 32,
-                      mainAxisSpacing: 32,
+              viewModel.isLoading
+                  ? const CircularProgressIndicator()
+                  : Expanded(
+                      child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 32,
+                            mainAxisSpacing: 32,
+                          ),
+                          itemCount: viewModel.images.length,
+                          itemBuilder: (context, index) {
+                            return ImageWidget(image: viewModel.images[index]);
+                          }),
                     ),
-                    itemCount: viewModel.images.length,
-                    itemBuilder: (context, index) {
-                      return ImageWidget(image: viewModel.images[index]);
-                    }),
-              )
             ],
           ),
         ),

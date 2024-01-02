@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:image_search_app_practice/data/model/pixabay_image.dart';
 
 class ImageWidget extends StatelessWidget {
-  PixabayImage image;
+  final PixabayImage image;
 
-  ImageWidget({
+  const ImageWidget({
     super.key,
     required this.image,
   });
@@ -12,11 +12,11 @@ class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
       child: Image.network(
         image.url,
         fit: BoxFit.cover,
       ),
-      borderRadius: BorderRadius.circular(10),
     );
   }
 }
