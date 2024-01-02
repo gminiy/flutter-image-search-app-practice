@@ -1,5 +1,5 @@
 import 'dart:convert';
-gitimport 'package:image_search_app_practice/data/dto/pixabay_query_response.dart';
+import 'package:image_search_app_practice/data/dto/pixabay_query_response.dart';
 import 'package:http/http.dart' as http;
 
 class PixabayApi {
