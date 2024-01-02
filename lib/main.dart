@@ -1,5 +1,5 @@
-// url: "https://pixabay.com/api/?key=41485709-10bae150ab77c646c4aade16f&image_type=photo"
 import 'package:flutter/material.dart';
+import 'package:image_search_app_practice/ui/screen/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MainScreen(),
     );
   }
 }
