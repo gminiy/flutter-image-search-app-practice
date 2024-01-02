@@ -38,7 +38,6 @@ class _MainScreenState extends State<MainScreen> {
                     icon: const Icon(Icons.search_outlined),
                     onPressed: () async {
                       await viewModel.queryImages(textEditingController.text);
-                      setState(() {});
                     },
                   ),
                   enabledBorder: OutlineInputBorder(
