@@ -10,13 +10,13 @@ class PixabayImageQueryDto {
     if (json['hits'] != null) {
       hits = [];
       json['hits'].forEach((v) {
-        hits?.add(Hits.fromJson(v));
+        hits?.add(Hit.fromJson(v));
       });
     }
   }
   int? total;
   int? totalHits;
-  List<Hits>? hits;
+  List<Hit>? hits;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -30,8 +30,8 @@ class PixabayImageQueryDto {
 
 }
 
-class Hits {
-  Hits({
+class Hit {
+  Hit({
       this.id, 
       this.pageURL, 
       this.type, 
@@ -55,7 +55,7 @@ class Hits {
       this.user, 
       this.userImageURL,});
 
-  Hits.fromJson(dynamic json) {
+  Hit.fromJson(dynamic json) {
     id = json['id'];
     pageURL = json['pageURL'];
     type = json['type'];
