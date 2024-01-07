@@ -6,6 +6,8 @@ class ImageModel {
     required String url,
   }) : _url = url;
 
+  String get url => _url;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

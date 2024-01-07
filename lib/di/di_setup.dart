@@ -16,8 +16,7 @@ void diSetup() {
   getIt.registerSingleton<QueryImageUseCase>(
     QueryImageUseCase(imageRepository: getIt<ImageRepository>()),
   );
-
   getIt.registerFactory<MainViewModel>(
-    () => MainViewModel(imageRepository: getIt<ImageRepository>()),
+    () => MainViewModel(queryImageUseCase: getIt<QueryImageUseCase>()),
   );
 }

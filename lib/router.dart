@@ -7,10 +7,11 @@ import 'package:provider/provider.dart';
 final router = GoRouter(
   routes: [
     GoRoute(
-        path: '/',
-        builder: (context, state) => ChangeNotifierProvider(
-              create: (_) => getIt<MainViewModel>(),
-              child: const MainScreen(),
-            ))
+      path: '/',
+      builder: (context, state) => ChangeNotifierProvider(
+        create: (_) => getIt<MainViewModel>(),
+        child: const MainScreen(),
+      ),
+    )
   ],
 );
