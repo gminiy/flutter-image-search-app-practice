@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:image_search_app_practice/presentation/view_model/main_event.dart';
 import 'package:image_search_app_practice/presentation/view_model/main_view_model.dart';
 import 'package:image_search_app_practice/ui/widget/common/image_widget.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +15,24 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final TextEditingController textEditingController = TextEditingController();
+  StreamSubscription<MainEvent>? _subscription;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      final viewModel = context.read<MainViewModel>();
+      _subscription = viewModel.eventStream.listen((event) {
+        switch (event) {
+          case DataLoadingError():
+            const snackBar = SnackBar(content: Text('로딩 실패'));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+        }
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -61,6 +82,7 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         itemCount: viewModel.state.images.length,
                         itemBuilder: (context, index) {
+                          print(index);
                           return ImageWidget(
                               url: viewModel.state.images[index].url);
                         },
